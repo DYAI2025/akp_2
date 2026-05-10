@@ -11,8 +11,9 @@
     "clean": "rm -rf dist",
     "lint": "tsc --noEmit",
     "test": "node --test scripts/verify-content.mjs",
+    "test:frontend": "node --test scripts/verify-frontend.mjs",
     "test:smoke": "node --test scripts/smoke-server.mjs",
-    "ci": "npm run lint && npm test && npm run build && npm run test:smoke"
+    "ci": "npm run lint && npm test && npm run test:frontend && npm run build && npm run test:smoke"
   },
   "dependencies": {
     "dotenv": "^17.2.3",
@@ -33,6 +34,6 @@
     "vite": "^6.2.3"
   },
   "engines": {
-    "node": ">=20"
+    "node": "22.x"
   }
 }
