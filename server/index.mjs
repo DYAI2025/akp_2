@@ -1,5 +1,6 @@
 import 'dotenv/config';
 import express from 'express';
+import {existsSync} from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 
@@ -9,24 +10,40 @@ const distDir = path.resolve(__dirname, '..', 'dist');
 const indexFile = path.join(distDir, 'index.html');
 
 const app = express();
-const port = Number(process.env.PORT) || 3000;
+const parsedPort = Number.parseInt(process.env.PORT ?? '3000', 10);
+const port = Number.isInteger(parsedPort) && parsedPort > 0 ? parsedPort : 3000;
 
 app.disable('x-powered-by');
 
 app.get('/healthz', (_request, response) => {
+  response.set('Cache-Control', 'no-store');
   response.status(200).json({status: 'ok'});
 });
 
 app.use(
   express.static(distDir, {
     index: false,
-    maxAge: '1y',
-    immutable: true,
+    setHeaders(response, filePath) {
+      if (filePath === indexFile) {
+        response.setHeader('Cache-Control', 'no-store');
+        return;
+      }
+
+      response.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+    },
   }),
 );
 
-app.get('*', (_request, response) => {
-  response.sendFile(indexFile);
+app.get('*', (_request, response, next) => {
+  if (!existsSync(indexFile)) {
+    response.status(503).send('Frontend build is missing. Run `npm run build` before starting the production server.');
+    return;
+  }
+
+  response.set('Cache-Control', 'no-store');
+  response.sendFile(indexFile, (error) => {
+    if (error) next(error);
+  });
 });
 
 app.listen(port, '0.0.0.0', () => {

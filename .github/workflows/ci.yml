@@ -28,6 +28,9 @@ jobs:
       - name: Content and deployment checks
         run: npm test
 
+      - name: Frontend rendering checks
+        run: npm run test:frontend
+
       - name: Build frontend
         run: npm run build
 
