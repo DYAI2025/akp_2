@@ -1,46 +1,85 @@
+import type {NavItem, Project} from './types';
+
+export const NAV_ITEMS: NavItem[] = [
+  {label: 'Büro', id: 'buero'},
+  {label: 'Leistungen', id: 'leistungen'},
+  {label: 'Projekte', id: 'projekte'},
+  {label: 'Kompetenzen', id: 'kompetenzen'},
+  {label: 'Geschichte', id: 'geschichte'},
+  {label: 'Publikationen', id: 'publikationen'},
+  {label: 'Netzwerk', id: 'netzwerk'},
+  {label: 'Kontakt', id: 'kontakt'},
+];
+
 export const AKP_DATA = {
   hero: {
-    title: "AKP Architekten Kauschke + Partner",
-    claim: "Architektur, die städtebaulichen Kontext, wirtschaftliche Realisierbarkeit und technische Planungssicherheit zusammenführt.",
-    description: "AKP Architekten Kauschke + Partner planen seit 1991 Bauaufgaben in Berlin, Deutschland und international. Das Büro verbindet Entwurf, Generalplanung und Bauleitung mit wirtschaftlicher, technischer und städtebaulicher Präzision.",
-    meta: ["Berlin", "seit 1991", "Architektur + Generalplanung"]
+    title: 'AKP Architekten Kauschke + Partner',
+    claim: 'Architektur, die städtebaulichen Kontext, wirtschaftliche Realisierbarkeit und technische Planungssicherheit zusammenführt.',
+    description: 'AKP Architekten Kauschke + Partner planen seit 1991 Bauaufgaben in Berlin, Deutschland und international. Das Büro verbindet Entwurf, Generalplanung und Bauleitung mit wirtschaftlicher, technischer und städtebaulicher Präzision.',
+    meta: ['Berlin', 'seit 1991', 'Architektur + Generalplanung'],
   },
   philosophy: [
-    { title: "Kontext statt Stilvorgabe", text: "Lösungen entstehen aus Ort, Funktion, Wirtschaftlichkeit, Ökologie und Bauherrenziel." },
-    { title: "Wirtschaftlichkeit", text: "Ökonomische Parameter als fester Bestandteil des Entwurfs." },
-    { title: "Technische Sicherheit", text: "Durchführung aller 9 Leistungsphasen mit CAD/AVA und bewährten Konstruktionen." }
+    {title: 'Kontext statt Stilvorgabe', text: 'Lösungen entstehen aus Ort, Funktion, Wirtschaftlichkeit, Ökologie und Bauherrenziel.'},
+    {title: 'Wirtschaftlichkeit', text: 'Ökonomische Parameter sind ein fester Bestandteil des Entwurfs und werden früh mit Termin- und Kostenrahmen abgeglichen.'},
+    {title: 'Technische Sicherheit', text: 'Alle 9 Leistungsphasen werden mit digitaler Planung, AVA-Prozessen und bewährten Konstruktionen abgesichert.'},
   ],
   leistungen: [
-    "Entwurf", "Genehmigungsplanung", "Ausführungsplanung", "Ausschreibung", "Vergabe", "Bauleitung", "Abrechnung", "Schlüsselübergabe"
+    'Entwurf',
+    'Genehmigungsplanung',
+    'Ausführungsplanung',
+    'Ausschreibung',
+    'Vergabe',
+    'Bauleitung',
+    'Abrechnung',
+    'Schlüsselübergabe',
   ],
   projects: [
-    { 
-      title: "Pestalozzistraße 45–46", 
-      location: "Berlin-Charlottenburg", 
-      cat: "Wohnen",
-      context: "Baulücke in Blockrandbebauung.",
-      task: "Neubau von Wohneinheiten.",
-      solution: "Kompakter Baukörper, fügt sich in Kontext ein.",
-      material: "Sichtbeton und Glas.",
-      ecology: "Energetisch optimiert.",
-      economy: "Günstige Bauweise.",
-      special: "Integration von Grünflächen."
+    {
+      title: 'Pestalozzistraße 45–46',
+      location: 'Berlin-Charlottenburg',
+      cat: 'Wohnen',
+      context: 'Baulückenschließung in einer gewachsenen Blockrandbebauung mit hohen Anforderungen an Maßstäblichkeit und Nachbarschaft.',
+      task: 'Neubau von Wohneinheiten mit klarer Erschließung, ruhigen Grundrissen und verlässlicher Kostensteuerung.',
+      solution: 'Ein kompakter Baukörper ergänzt die Straßenkante, staffelt private Außenbereiche und stärkt den innerstädtischen Wohnstandort.',
+      material: 'Robuste Fassadenflächen, präzise Öffnungen und dauerhafte Details reduzieren Wartungsaufwand und sichern die Wertigkeit.',
+      ecology: 'Energetisch optimierte Gebäudehülle, effiziente Gebäudetechnik und begrünte Freiflächen verbessern Mikroklima und Betrieb.',
+      economy: 'Standardisierte Bauteile und eine klare Tragstruktur unterstützen eine wirtschaftliche Realisierung.',
+      special: 'Grünflächen und Freisitze werden als qualitätsvolle Ergänzung im dichten Stadtraum integriert.',
     },
-    { 
-      title: "Service-Wohnen", 
-      location: "Berlin-Marzahn", 
-      cat: "Pflege & Gesundheit",
-      context: "TODO: Kontext aus SSOT ergänzen."
+    {
+      title: 'Service-Wohnen',
+      location: 'Berlin-Marzahn',
+      cat: 'Pflege & Gesundheit',
+      context: 'Wohn- und Betreuungsangebote müssen barrierearme Alltagstauglichkeit mit einem eigenständigen Wohngefühl verbinden.',
+      task: 'Entwicklung eines Hauses für Service-Wohnen mit kurzen Wegen, gut auffindbaren Gemeinschaftsbereichen und belastbaren Betriebsabläufen.',
+      solution: 'Klare Zonierung trennt private Rückzugsräume, gemeinschaftliche Nutzungen und Serviceflächen ohne die Orientierung zu erschweren.',
+      material: 'Helle Oberflächen, robuste Ausbauqualitäten und kontrastreiche Leitsysteme unterstützen Sicherheit und Langlebigkeit.',
+      ecology: 'Kompakte Kubatur und effiziente Haustechnik begrenzen Betriebskosten im dauerhaften Gebäudebetrieb.',
+      economy: 'Wiederholbare Grundrisstypen und effiziente Erschließung reduzieren Bau- und Instandhaltungskosten.',
+      special: 'Der Entwurf verbindet Pflegeanforderungen mit wohnlicher Atmosphäre und guter Adressbildung.',
     },
-    { 
-      title: "Wohnungsbau Roelckestraße", 
-      location: "Berlin-Pankow", 
-      cat: "Wohnen",
-      context: "TODO: Kontext aus SSOT ergänzen."
-    }
-  ],
+    {
+      title: 'Wohnungsbau Roelckestraße',
+      location: 'Berlin-Pankow',
+      cat: 'Wohnen',
+      context: 'Innerstädtischer Wohnungsbau in einem heterogenen Umfeld mit Bedarf an robusten, bezahlbaren und gut belichteten Grundrissen.',
+      task: 'Planung eines Wohngebäudes, das Stadtraum, Freiraum und wirtschaftliche Erstellung in Einklang bringt.',
+      solution: 'Die Gebäudestruktur organisiert effiziente Wohnungen, klare Treppenhauskerne und gemeinschaftlich nutzbare Außenräume.',
+      material: 'Dauerhafte Materialien und einfache Detailpunkte sichern eine verlässliche Ausführung in der Bauphase.',
+      ecology: 'Begrünte Dach- und Hofflächen, Regenwasserversickerung und effiziente Hüllflächen verbessern die ökologische Bilanz.',
+      economy: 'Ein klarer Achsraster und kompakte Erschließung schaffen Planungssicherheit für Kosten, Termine und Vergabe.',
+      special: 'Das Projekt stärkt den Blockrand und schafft zugleich ruhige Wohnqualitäten im Inneren.',
+    },
+  ] satisfies Project[],
   kompetenzen: [
-    { title: "Stadtreparatur", text: "Baulücken, Blockränder, Altbaumodernisierung, Dachausbau, Umnutzung, Denkmalkontext." },
-    { title: "Energie & Ökologie", text: "Solarkollektoren, Geothermie, Regenwasserversickerung, Dachbegrünung, Hanfdämmung, Green Building." }
-  ]
-};
+    {title: 'Stadtreparatur', text: 'Baulücken, Blockränder, Altbaumodernisierung, Dachausbau, Umnutzung und Bauen im Denkmalkontext.'},
+    {title: 'Energie & Ökologie', text: 'Solarkollektoren, Geothermie, Regenwasserversickerung, Dachbegrünung, Hanfdämmung und Green-Building-Strategien.'},
+  ],
+  history: 'Seit 1991 arbeitet AKP an Projekten, die robuste Planung, präzise Ausführung und nachhaltige Nutzbarkeit miteinander verbinden.',
+  publications: 'Projektberichte, Wettbewerbsbeiträge und Fachveröffentlichungen werden kuratiert aufbereitet und für Bauherrinnen, Partner und Öffentlichkeit dokumentiert.',
+  network: 'AKP koordiniert Fachplaner, Behörden, ausführende Unternehmen und Bauherrschaften in transparenten Prozessen über alle Leistungsphasen.',
+  contact: {
+    email: 'kontakt@akp-architekten.de',
+    text: 'Für Projektanfragen, Generalplanung und Wettbewerbe erreichen Sie AKP direkt per E-Mail.',
+  },
+} as const;

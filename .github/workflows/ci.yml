@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build-and-smoke-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Typecheck
+        run: npm run lint
+
+      - name: Content and accessibility smoke tests
+        run: npm run test:content
+
+      - name: Railway configuration test
+        run: npm run test:railway
+
+      - name: Build production bundle
+        run: npm run build
+
+      - name: Preview deployment smoke test
+        run: npm run smoke:preview

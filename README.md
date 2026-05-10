@@ -1,20 +1,52 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# AKP Architekten Kauschke + Partner
 
-# Run and deploy your AI Studio app
+Deployfähige Vite/React-Single-Page-App für AKP Architekten. Die Anwendung ist als statische Frontend-App mit produktionsfähigem Preview-Server für Railway vorbereitet.
 
-This contains everything you need to run your app locally.
+## Lokale Entwicklung
 
-View your app in AI Studio: https://ai.studio/apps/20d63d32-be9e-48fd-b290-4c60d7df8d58
+**Voraussetzungen:** Node.js 22 oder neuer.
 
-## Run Locally
+```bash
+npm ci
+npm run dev
+```
 
-**Prerequisites:**  Node.js
+Der Dev-Server läuft standardmäßig auf `http://localhost:3000` und bindet an `0.0.0.0`, damit Container- und Railway-Umgebungen ihn erreichen können.
 
+## Qualitätssicherung
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+```bash
+npm run lint          # TypeScript-Typecheck
+npm run test          # Typecheck + Content-/A11y-Smoke-Test + Railway-Konfigurationscheck
+npm run build         # Produktionsbundle erstellen
+npm run smoke:preview # Gebautes Bundle über den Start-Befehl ausliefern und Assets prüfen
+npm run ci            # Vollständige lokale CI-Kette
+```
+
+## Railway-Deployment
+
+Das Repository enthält eine `railway.json` für Nixpacks:
+
+- Build: `npm ci && npm run build`
+- Start: `npm run start`
+- Healthcheck: `/`
+
+Railway setzt im Deployment die Umgebungsvariable `PORT`. Das Start-Script bindet Vite Preview an `0.0.0.0` und verwendet `${PORT:-4173}`, sodass die App lokal und auf Railway sauber startet.
+
+## Projektstruktur
+
+```text
+src/
+  App.tsx                    Hauptseite und Sections
+  constants.ts               Navigations-, Inhalts- und Projektdaten
+  types.ts                   Geteilte TypeScript-Typen
+  components/
+    Cursor.tsx               Desktop-only Custom Cursor
+    ProjectDetail.tsx        Zugänglicher Projekt-Dialog
+scripts/
+  test-content.tsx           SSR-basierte Frontend-/A11y-Smoke-Tests
+  test-railway-config.ts     Deployment-Konfigurationscheck
+  smoke-preview.mjs          Produktionsserver-Smoke-Test
+.github/workflows/ci.yml     CI-Pipeline für saubere Deployments
+railway.json                 Railway-Konfiguration
+```

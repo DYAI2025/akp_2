@@ -1,16 +1,27 @@
-import { useEffect, useState } from 'react';
+import {useEffect, useState} from 'react';
+
+const supportsCustomCursor = () =>
+  typeof window !== 'undefined' &&
+  window.matchMedia('(hover: hover) and (pointer: fine)').matches &&
+  !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 export default function Cursor() {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [position, setPosition] = useState({x: 0, y: 0});
   const [label, setLabel] = useState<string | null>(null);
   const [visible, setVisible] = useState(false);
+  const [enabled, setEnabled] = useState(false);
 
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setPosition({ x: e.clientX, y: e.clientY });
-      
-      // Determine label based on hovered element
-      const target = e.target as HTMLElement;
+    setEnabled(supportsCustomCursor());
+  }, []);
+
+  useEffect(() => {
+    if (!enabled) return;
+
+    const handleMouseMove = (event: MouseEvent) => {
+      setPosition({x: event.clientX, y: event.clientY});
+
+      const target = event.target as HTMLElement;
       const cursorLabel = target.closest('[data-cursor]')?.getAttribute('data-cursor');
       setLabel(cursorLabel || null);
       setVisible(true);
@@ -28,17 +39,16 @@ export default function Cursor() {
       document.body.removeEventListener('mouseleave', handleMouseLeave);
       document.body.removeEventListener('mouseenter', handleMouseEnter);
     };
-  }, []);
+  }, [enabled]);
 
-  // Disable on touch
-  if (typeof window !== 'undefined' && 'ontouchstart' in window) return null;
+  if (!enabled) return null;
 
   return (
     <div
       className="fixed top-0 left-0 z-[9999] pointer-events-none flex items-center justify-center transition-opacity duration-300"
       style={{
         transform: `translate(${position.x - 10}px, ${position.y - 10}px)`,
-        opacity: visible ? 1 : 0
+        opacity: visible ? 1 : 0,
       }}
     >
       <div className="w-5 h-5 rounded-full border border-stone-600 flex items-center justify-center transition-all duration-300">
