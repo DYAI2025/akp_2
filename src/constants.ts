@@ -1,46 +1,65 @@
-export const AKP_DATA = {
+import type {AkpData} from './types';
+
+export const AKP_DATA: AkpData = {
   hero: {
-    title: "AKP Architekten Kauschke + Partner",
-    claim: "Architektur, die städtebaulichen Kontext, wirtschaftliche Realisierbarkeit und technische Planungssicherheit zusammenführt.",
-    description: "AKP Architekten Kauschke + Partner planen seit 1991 Bauaufgaben in Berlin, Deutschland und international. Das Büro verbindet Entwurf, Generalplanung und Bauleitung mit wirtschaftlicher, technischer und städtebaulicher Präzision.",
-    meta: ["Berlin", "seit 1991", "Architektur + Generalplanung"]
+    title: 'AKP Architekten Kauschke + Partner',
+    claim: 'Architektur, die städtebaulichen Kontext, wirtschaftliche Realisierbarkeit und technische Planungssicherheit zusammenführt.',
+    description: 'AKP Architekten Kauschke + Partner planen seit 1991 Bauaufgaben in Berlin, Deutschland und international. Das Büro verbindet Entwurf, Generalplanung und Bauleitung mit wirtschaftlicher, technischer und städtebaulicher Präzision.',
+    meta: ['Berlin', 'seit 1991', 'Architektur + Generalplanung'],
   },
   philosophy: [
-    { title: "Kontext statt Stilvorgabe", text: "Lösungen entstehen aus Ort, Funktion, Wirtschaftlichkeit, Ökologie und Bauherrenziel." },
-    { title: "Wirtschaftlichkeit", text: "Ökonomische Parameter als fester Bestandteil des Entwurfs." },
-    { title: "Technische Sicherheit", text: "Durchführung aller 9 Leistungsphasen mit CAD/AVA und bewährten Konstruktionen." }
+    {title: 'Kontext statt Stilvorgabe', text: 'Lösungen entstehen aus Ort, Funktion, Wirtschaftlichkeit, Ökologie und Bauherrenziel.'},
+    {title: 'Wirtschaftlichkeit', text: 'Ökonomische Parameter werden vom ersten Entwurf an mitgedacht und transparent geplant.'},
+    {title: 'Technische Sicherheit', text: 'Alle Leistungsphasen werden mit belastbaren CAD-/AVA-Prozessen, Bauleitungserfahrung und bewährten Konstruktionen begleitet.'},
   ],
   leistungen: [
-    "Entwurf", "Genehmigungsplanung", "Ausführungsplanung", "Ausschreibung", "Vergabe", "Bauleitung", "Abrechnung", "Schlüsselübergabe"
+    'Entwurf',
+    'Genehmigungsplanung',
+    'Ausführungsplanung',
+    'Ausschreibung',
+    'Vergabe',
+    'Bauleitung',
+    'Abrechnung',
+    'Schlüsselübergabe',
   ],
   projects: [
-    { 
-      title: "Pestalozzistraße 45–46", 
-      location: "Berlin-Charlottenburg", 
-      cat: "Wohnen",
-      context: "Baulücke in Blockrandbebauung.",
-      task: "Neubau von Wohneinheiten.",
-      solution: "Kompakter Baukörper, fügt sich in Kontext ein.",
-      material: "Sichtbeton und Glas.",
-      ecology: "Energetisch optimiert.",
-      economy: "Günstige Bauweise.",
-      special: "Integration von Grünflächen."
+    {
+      title: 'Pestalozzistraße 45–46',
+      location: 'Berlin-Charlottenburg',
+      cat: 'Wohnen',
+      context: 'Baulückenschluss in gewachsener Blockrandbebauung mit hohen Anforderungen an Maßstab, Belichtung und Einfügung.',
+      task: 'Neubau von Wohneinheiten inklusive effizienter Grundrisse, klarer Erschließung und belastbarer Kostensteuerung.',
+      solution: 'Ein kompakter Baukörper schließt die städtebauliche Kante und nimmt Traufhöhe, Rhythmus und Proportionen der Umgebung auf.',
+      material: 'Dauerhafte Fassadenmaterialien, robuste Details und ein klar strukturierter Ausbau unterstützen den wirtschaftlichen Betrieb.',
+      ecology: 'Energetisch optimierte Gebäudehülle und begrünte Freiflächen verbessern Komfort, Mikroklima und Regenwasserrückhalt.',
+      economy: 'Kompakte Erschließung, wiederholbare Details und frühe Ausschreibungslogik sichern eine wirtschaftliche Realisierung.',
+      special: 'Die Integration von gemeinschaftlichen Grünflächen stärkt die Wohnqualität im dichten innerstädtischen Kontext.',
     },
-    { 
-      title: "Service-Wohnen", 
-      location: "Berlin-Marzahn", 
-      cat: "Pflege & Gesundheit",
-      context: "TODO: Kontext aus SSOT ergänzen."
+    {
+      title: 'Service-Wohnen',
+      location: 'Berlin-Marzahn',
+      cat: 'Pflege & Gesundheit',
+      context: 'Wohn- und Betreuungsangebote werden mit kurzen Wegen, barrierearmen Grundrissen und klar adressierten Gemeinschaftsbereichen verbunden.',
+      task: 'Planung eines robusten Gebäudekonzepts, das Pflegeprozesse, private Rückzugsräume und wirtschaftliche Bewirtschaftung zusammenführt.',
+      solution: 'Übersichtliche Erschließung, flexibel nutzbare Gemeinschaftszonen und gut belichtete Wohnungen schaffen Orientierung und Alltagstauglichkeit.',
+      material: 'Pflegeleichte Oberflächen, widerstandsfähige Bauteile und eindeutige Kontraste unterstützen Nutzbarkeit und Werterhalt.',
+      ecology: 'Kompakte Kubatur und effiziente Haustechnik reduzieren Energiebedarf und Betriebskosten.',
+      economy: 'Standardisierte Raumcluster und klare Schnittstellen vereinfachen Ausschreibung, Bauablauf und spätere Instandhaltung.',
     },
-    { 
-      title: "Wohnungsbau Roelckestraße", 
-      location: "Berlin-Pankow", 
-      cat: "Wohnen",
-      context: "TODO: Kontext aus SSOT ergänzen."
-    }
+    {
+      title: 'Wohnungsbau Roelckestraße',
+      location: 'Berlin-Pankow',
+      cat: 'Wohnen',
+      context: 'Innerstädtischer Wohnungsbau in einem heterogenen Quartier mit Bedarf an maßvoller Nachverdichtung und qualitätsvollen Freiräumen.',
+      task: 'Entwicklung eines Wohngebäudes, das Grundstücksausnutzung, Nachbarschaftsverträglichkeit und nachhaltige Planung verbindet.',
+      solution: 'Differenzierte Baukörperstaffelung, klare Grundrissorganisation und ruhige Fassadenproportionen vermitteln zwischen Straße und Hof.',
+      material: 'Langlebige Fassadenelemente und wartungsarme Konstruktionen bilden die Grundlage für einen nachhaltigen Lebenszyklus.',
+      ecology: 'Begrünte Dach- und Hofflächen, Regenwasserversickerung und energetische Optimierung stärken die ökologische Performance.',
+      economy: 'Effiziente Grundrisse und kontrollierte Detailtiefe halten Bau- und Nutzungskosten planbar.',
+    },
   ],
   kompetenzen: [
-    { title: "Stadtreparatur", text: "Baulücken, Blockränder, Altbaumodernisierung, Dachausbau, Umnutzung, Denkmalkontext." },
-    { title: "Energie & Ökologie", text: "Solarkollektoren, Geothermie, Regenwasserversickerung, Dachbegrünung, Hanfdämmung, Green Building." }
-  ]
+    {title: 'Stadtreparatur', text: 'Baulücken, Blockränder, Altbaumodernisierung, Dachausbau, Umnutzung und Denkmalkontext werden präzise weitergebaut.'},
+    {title: 'Energie & Ökologie', text: 'Solarkollektoren, Geothermie, Regenwasserversickerung, Dachbegrünung, Hanfdämmung und Green-Building-Strategien werden projektspezifisch kombiniert.'},
+  ],
 };

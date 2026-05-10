@@ -1,20 +1,43 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# AKP Architekten Portfolio
 
-# Run and deploy your AI Studio app
+Eine Vite/React-One-Page-Site für AKP Architekten Kauschke + Partner. Das Projekt ist für lokale Entwicklung, CI-Prüfungen und Railway-Deployment vorbereitet.
 
-This contains everything you need to run your app locally.
+## Voraussetzungen
 
-View your app in AI Studio: https://ai.studio/apps/20d63d32-be9e-48fd-b290-4c60d7df8d58
+- Node.js 22 (siehe CI-Konfiguration)
+- npm
 
-## Run Locally
+## Lokale Entwicklung
 
-**Prerequisites:**  Node.js
+```bash
+npm ci
+npm run dev
+```
 
+Die lokale Vite-Entwicklung läuft standardmäßig auf `http://localhost:3000` und bindet an `0.0.0.0`, damit Container-Umgebungen die Vorschau erreichen können.
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## Produktionsbuild und Railway-Start
+
+```bash
+npm run build
+npm run start
+```
+
+Der Express-Server liefert den Inhalt aus `dist/`, nutzt `process.env.PORT`, bindet an `0.0.0.0` und stellt `/healthz` als Healthcheck bereit. Deep Links fallen auf die SPA-HTML-Shell zurück.
+
+## Qualitätssicherung
+
+```bash
+npm run lint
+npm test
+npm run build
+npm run test:smoke
+```
+
+Oder gebündelt:
+
+```bash
+npm run ci
+```
+
+Die CI führt Typechecking, Content-/Deployment-Prüfungen, Produktionsbuild und einen Smoke-Test des Railway-Servers aus.
